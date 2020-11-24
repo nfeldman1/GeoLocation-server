@@ -60,7 +60,7 @@ exports.findOne = (req, res) => {
         });
     }
     console.log(data);
-     return res.status(200).send({data});
+     return res.status(200).send({"distance":data});
   });
 };
 

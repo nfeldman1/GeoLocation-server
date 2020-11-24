@@ -10,7 +10,7 @@ const Distance = function(distance) {
 };
 
 Distance.findBySrcDest = ((src, dest, result) => {
-  sql.query(`SELECT km FROM distances WHERE source = '${src}' AND dest = '${dest}'`, (err, res) => {
+  sql.query(`SELECT id, km FROM distances WHERE source = '${src}' AND dest = '${dest}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -26,7 +26,7 @@ Distance.findBySrcDest = ((src, dest, result) => {
           return;
         }
       });
-      result(null, res[0]);
+      result(null, res[0].km);
       return;
     }
 else getDistance(src, dest, (err, res) =>{
@@ -75,8 +75,8 @@ const getDistance = (src, dest, result) =>{
     },
     function(err, data) {
       if (err) return result(err, null);
-      console.log(data);
-      return result(null, data.distance);
+      console.log("78" +data);
+      return result(null, data);
   });
   }
 
